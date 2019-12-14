@@ -1,0 +1,28 @@
+body {
+  font-family: 'Fira Sans', sans-serif;
+  -webkit-animation-delay: 0.1s;
+  -webkit-animation-name: fontfix;
+  -webkit-animation-duration: 0.1s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-timing-function: linear;
+  background-color: #fcf8e3;
+}
+
+@-webkit-keyframes fontfix {
+  from { opacity: 1; }
+  to   { opacity: 1; }
+}
+
+.app-container {
+  padding: 10px 5%;
+}
+
+.fc table {
+  background-color: #fff;
+}
+
+.fc-event {
+  color: #fff;
+  background-color: rgb(39, 184, 39);
+  border: 1px solid rgb(39, 184, 39);
+}

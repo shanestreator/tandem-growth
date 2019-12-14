@@ -1,0 +1,5 @@
+node_modules
+.env
+.vscode
+/config/keys_dev.js
+/client/node_modules

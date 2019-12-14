@@ -1,0 +1,17 @@
+.header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 75px;
+
+  .title {
+    font-size: 3rem;
+    color: rgb(39, 184, 39);
+  }
+}
+
+@media (max-width: 700px) {
+  .header {
+    margin-bottom: 25px;
+  }
+}
