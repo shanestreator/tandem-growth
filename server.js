@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const volleyball = require('volleyball');
 
-const data = require('./routes/api/data')
+const data = require('./routes/api/data/data')
 
 const app = express();
 

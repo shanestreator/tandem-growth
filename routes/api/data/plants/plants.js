@@ -1,12 +1,12 @@
 const router = require('express').Router()
 const uuidv4 = require('uuid/v4');
 
-const Data = require('../../models/Data')
+const Data = require('../../../../models/Data')
 
-// @route   GET api/data/water-schedule
-// @desc    Gets all plant data
+// @route   GET api/data/plants/:id
+// @desc    Gets data of one plant
 // @access  Public
-router.get('/water-schedule', async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const plantData = await Data.find({})
     res.json(plantData)
@@ -15,10 +15,22 @@ router.get('/water-schedule', async (req, res) => {
   }
 })
 
-// @route   POST api/data/add-plant
-// @desc    Adds a specified plant
+// @route   GET api/data/plants
+// @desc    Gets all plant data
 // @access  Public
-router.post('/add-plant', async (req, res) => {
+router.get('/', async (req, res) => {
+  try {
+    const plantData = await Data.find({})
+    res.json(plantData)
+  } catch (error) {
+    console.log(error)
+  }
+})
+
+// @route   POST api/data/plants
+// @desc    Adds a plant
+// @access  Public
+router.post('/', async (req, res) => {
   try {
     const { name, days_water_after } = req.body
     const newPlantAdded = await new Data({
@@ -37,10 +49,10 @@ router.post('/add-plant', async (req, res) => {
   }
 })
 
-// @route   POST api/data/add-multiple-plants
-// @desc    Adds multiple plants
+// @route   POST api/data/plants/many
+// @desc    Adds many plants (array of objects)
 // @access  Public
-router.post('/add-multiple-plants', (req, res) => {
+router.post('/many', (req, res) => {
   try {
     Promise.all(req.body.map(async ({ name, days_water_after }) => {
       const plantData = await new Data({
@@ -63,12 +75,12 @@ router.post('/add-multiple-plants', (req, res) => {
   }
 })
 
-// @route   PUT api/data/update-plant
+// @route   PUT api/data/plants/:id
 // @desc    Updates a specified plant
 // @access  Public
-router.put('/update-plant', async (req, res) => {
+router.put('/:id', async (req, res) => {
   try {
-    const match = await Data.findOne({ plantId: req.body.plantId })
+    const match = await Data.findOne({ plantId: req.params.id })
     if (!match) {
       res.sendStatus(400).json({ msg: 'No plant found.' })
     }
@@ -98,10 +110,10 @@ router.put('/update-plant', async (req, res) => {
   }
 })
 
-// @route   DELETE api/data/delete-plant
-// @desc    Deletes a specified plant
+// @route   DELETE api/data/plants/:id
+// @desc    Deletes one plant
 // @access  Public
-router.delete('/delete-plant', async (req, res) => {
+router.delete('/:id', async (req, res) => {
   try {
     const { plantId } = req.body
     const match = await Data.findOne({ plantId })
