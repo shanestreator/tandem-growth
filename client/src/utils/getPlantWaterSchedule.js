@@ -39,22 +39,19 @@ const getPlantWaterSchedule = (plants) => {
           plantEvents = [...plantEvents, { title: `💧 ${name}`, date: startDate }]
       }
 
-      // We don't have to worry about days that are divisible by 7 with no remainder
+      // Considering the start date we don't have to worry about days divisible by 7
       if (days_water_after % 7 === 0) {
         plantEvents = pushPlantEvent(plantEvents, name, days_water_after)
-
         return
       }
       // Every other days_water_after adds +1 day then reset
       else if (days_water_after % 3 === 0) {
         plantEvents = pushPlantEvent(plantEvents, name, days_water_after, 1)
-
         return
       }
       // Every 2nd days_water_after adds +1 day then reset
       else if (days_water_after % 2 === 0) {
         plantEvents = pushPlantEvent(plantEvents, name, days_water_after, 2)
-
         return
       }
     })

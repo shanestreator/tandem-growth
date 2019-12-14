@@ -104,10 +104,15 @@ router.put('/update-plant', async (req, res) => {
 router.delete('/delete-plant', async (req, res) => {
   try {
     const { plantId } = req.body
-    const deletedPlant = await Data.findOneAndDelete({plantId}, {select: {name, days_water_after}}).save()
+    const match = await Data.findOne({ plantId })
 
-    console.log('deletedPlant: ', deletedPlant)
-    res.json({ msg: 'Plant was removed.', info: deletedPlant })
+    if (!match) {
+      res.sendStatus(400).json({ msg: 'No plant found.' })
+    }
+
+    const deletedPlant = await Data.deleteOne({plantId})
+
+    res.json({ msg: 'Plant was removed.', info: match })
   }
   catch (error) {
     console.log(error)
