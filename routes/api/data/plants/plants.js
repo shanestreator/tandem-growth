@@ -8,7 +8,8 @@ const Data = require('../../../../models/Data')
 // @access  Public
 router.get('/:id', async (req, res) => {
   try {
-    const plantData = await Data.find({})
+    const plantData = await Data.find({ plantId: req.params.id })
+
     res.json(plantData)
   } catch (error) {
     console.log(error)
@@ -82,7 +83,7 @@ router.put('/:id', async (req, res) => {
   try {
     const match = await Data.findOne({ plantId: req.params.id })
     if (!match) {
-      res.sendStatus(400).json({ msg: 'No plant found.' })
+      res.status(400).json({ msg: 'No plant found.' })
     }
 
     const { plantId, name, days_water_after } = match
@@ -119,7 +120,7 @@ router.delete('/:id', async (req, res) => {
     const match = await Data.findOne({ plantId })
 
     if (!match) {
-      res.sendStatus(400).json({ msg: 'No plant found.' })
+      res.status(400).json({ msg: 'No plant found.' })
     }
 
     const deletedPlant = await Data.deleteOne({plantId})
