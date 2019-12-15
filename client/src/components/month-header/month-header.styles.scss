@@ -1,0 +1,17 @@
+.month-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 5%;
+
+  .day-of-week {
+    display: flex;
+    padding-left: 3px;
+    align-items: center;
+    max-width: 175px;
+    width: 14.285%;
+    -moz-box-shadow:    inset 0 0 2.5px #000000;
+    -webkit-box-shadow: inset 0 0 2.5px #000000;
+    box-shadow:         inset 0 0 2.5px #000000;
+  }
+}

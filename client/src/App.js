@@ -1,6 +1,7 @@
 import React from 'react';
 
 import Header from './components/header/header.component'
+import Footer from './components/footer/footer.component'
 import Calendar from './components/calendar/calendar.component'
 
 import './App.css';
@@ -22,6 +23,7 @@ class App extends React.Component {
       <div className="app-container">
         <Header />
         <Calendar {...this.state}/>
+        <Footer />
       </div>
     );
   }

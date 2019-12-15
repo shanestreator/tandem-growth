@@ -1,9 +1,10 @@
 import React from 'react';
+import axios from 'axios';
 
 import MonthView from '../month/month.component'
-// import WeekView from '../week/week.component'
-import jsonPlantData from '../../data/Apprentice_WeGrowInTandem_Data'
 import getPlantWaterSchedule from '../../utils/getPlantWaterSchedule'
+
+import './calendar.styles.scss'
 
 class Calendar extends React.Component {
   constructor(props) {
@@ -14,14 +15,24 @@ class Calendar extends React.Component {
     }
   }
 
-  componentDidMount() {
-    const plants = getPlantWaterSchedule(jsonPlantData)
+  async componentDidMount() {
+    try {
+      const { data } = await axios.get('/api/data/plants')
+      const plants = getPlantWaterSchedule(data)
 
-    this.setState({ plants: plants })
+      this.setState({ plants: plants })
+
+    } catch (error) {
+      console.error(error)
+    }
   }
 
   render() {
-    return <MonthView plantData={this.state.plants} />
+    return (
+      <div className="calendar">
+        <MonthView plantData={this.state.plants} />
+      </div>
+    )
   }
 }
 
