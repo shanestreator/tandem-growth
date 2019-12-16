@@ -17,13 +17,13 @@ class Calendar extends React.Component {
 
   async componentDidMount() {
     try {
+      const { data } = await axios.get('/api/data/plants'),
+            plants = getPlantWaterSchedule(data)
+      
       const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
-      const { data } = await axios.get('/api/data/plants')
-      const plants = getPlantWaterSchedule(data)
-      console.log('localStorage: ', localStoragePlantData)
+      
       if (!localStoragePlantData) {
         localStorage.setItem('watered', JSON.stringify(plants))
-
         this.setState({ plants: plants })
       }
       else if (localStoragePlantData) {
@@ -38,7 +38,6 @@ class Calendar extends React.Component {
   }
 
   updatePlants = (plants) => {
-    console.log('updatePlants: ', plants)
     this.setState({ plants })
   }
 

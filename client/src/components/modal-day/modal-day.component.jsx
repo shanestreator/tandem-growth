@@ -22,7 +22,15 @@ const ModalDay = ({ dayPlantData, date, setPlantHasBeenWatered }) => {
             <small className='mb-3 small-color'>* Touch plant to mark complete *</small>
             <div className="mb-3"></div>
             {
-              dayPlantData.map(plant => {
+              dayPlantData.sort((a, b) => {
+                var nameA=a.title.toLowerCase(), nameB=b.title.toLowerCase();
+                if (nameA < nameB) //sort string ascending
+                 return -1;
+                if (nameA > nameB)
+                 return 1;
+                return 0; //default return value (no sorting)
+               })
+              .map(plant => {
                 return (
                   <p className={`modal-plant ${plant.watered ? 'modal-plant-active' : null}`} onClick={() => setPlantHasBeenWatered(plant, plant.date)} key={plant.plantId}>{plant.title}</p>
                 )

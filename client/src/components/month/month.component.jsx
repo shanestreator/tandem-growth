@@ -25,28 +25,28 @@ class MonthView extends React.Component {
   
   setPlantHasBeenWatered = (currPlant, waterDate) => {
     let waterSchedule = JSON.parse(localStorage.getItem('watered'))
-    
 
     let dayPlantData = waterSchedule.map(plant =>{
-      const {date, plantId, watered} = plant
-      if (moment(waterDate).format('YYYY-MM-DD') === date && plantId === currPlant.plantId) {
-        plant.watered = !watered
-        if (!watered) {
-          plant.classNames = ['event-active']
+        const {date, plantId, watered} = plant
+
+        if (moment(waterDate).format('YYYY-MM-DD') === date && plantId === currPlant.plantId) {
+            plant.watered = !watered
+
+            if (!watered) {
+              plant.classNames = ['event-active']
+            }
+            else {
+              plant.classNames = [null]
+            }
+            return plant
+        }
+        else if(moment(waterDate).format('YYYY-MM-DD') === date) {
+            return plant
         }
         else {
-          plant.classNames = [null]
+            return plant
         }
-        return plant
-      }
-      else if(moment(waterDate).format('YYYY-MM-DD') === date) {
-        return plant
-      }
-      else {
-        return plant
-      }
     })
-    this.props.updatePlants(dayPlantData)
 
     const dayPlantDataFilter = dayPlantData.filter(({date}) => moment(waterDate).format('YYYY-MM-DD') === date)
 
@@ -61,11 +61,10 @@ class MonthView extends React.Component {
     const plantData = JSON.parse(localStorage.getItem('watered'))
 
     if (e.event || plantData.filter(({date}) => date === e.dateStr)) {
-      const start = e.dateStr || e.event.start
-      const momentStart = moment(start).format('YYYY-MM-DD')
-      const modalStart = moment(start).format("dddd, MMMM Do YYYY")
-
-      const dayPlantData = plantData.filter(({date}) => date === momentStart)
+      const start = e.dateStr || e.event.start,
+            momentStart = moment(start).format('YYYY-MM-DD'),
+            dayPlantData = plantData.filter(({date}) => date === momentStart),
+            modalStart = moment(start).format("dddd, MMMM Do YYYY")
 
       this.setState({ date: modalStart, dayPlantData })
 
@@ -73,11 +72,13 @@ class MonthView extends React.Component {
     }
     else {
       this.setState({ date: null, dayPlantData: null })
+
       $('#exampleModalScrollable').modal();
     }
   }
 
   render() {
+    const { date, dayPlantData } = this.state
     const { plantData } = this.props
 
     return (
@@ -96,8 +97,8 @@ class MonthView extends React.Component {
         />
 
         <ModalDay
-          date={this.state.date}
-          dayPlantData={this.state.dayPlantData}
+          date={date}
+          dayPlantData={dayPlantData}
           setPlantHasBeenWatered={this.setPlantHasBeenWatered}
         />
 
