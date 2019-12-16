@@ -48,6 +48,16 @@
           }
         ]
 
+# Solution Algorithm
+  - getPlantWaterSchedule()
+    - Functionality:
+      - Specifically designed for the given data and number of days. This function returns an array of objects that is formatted to pair with event objects on the fullcalendar package being utilized.
+      - More Time - Improvements: can be more dynamic to handle any number of days to water after.
+    - Used:
+      - https://github.com/shanestreator/tandem-growth/blob/master/client/src/components/calendar/calendar.component.jsx
+    - File:
+      - https://github.com/shanestreator/tandem-growth/blob/master/client/src/utils/getPlantWaterSchedule.js
+
 # Technologies used
   - Node.js (v10.16.0)
   - React (v16.12.0)
