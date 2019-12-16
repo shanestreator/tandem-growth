@@ -3,8 +3,8 @@ import React from 'react'
 import './footer.styles.scss'
 
 const Footer = () => (
-  <div className="footer">
-    Technology Used: Node.js, React, Mongoose, mLab, Heroku
+  <div data-testid='footer' className="footer">
+    Technology Used: Node.js(v10.16.0), React(v16.12.0), jQuery, Express, MongoDB/Mongoose, mLab, Heroku
   </div>
 )
 

@@ -1,5 +1,5 @@
 # tandem-growth
-> A project designed to remove the stress of remember when to water your beloved plants...
+  A project designed to remove the stress of remembering when to water your beloved plants...
 
 # Objective
   Your goal is to create an application that generates a watering schedule for the next 12 weeks for all of our plants.
@@ -24,6 +24,7 @@
     - Reading through the Moment documentation.
 
 # Future/Upcoming Features:
+  - Tests!!!
   - Responsive - mobile friendly
   - Include the built, backend CRUD APIs into application
   - JWT protected routes & frontend signup/login to view calendar
