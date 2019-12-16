@@ -1,0 +1,16 @@
+.modal-plant {
+  padding: 2.5px;
+  border: solid 0.5px #27b827;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.modal-plant-active {
+  background-color: #27b827;
+}
+
+.small-color {
+  color: #27b827;
+}

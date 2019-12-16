@@ -3,7 +3,7 @@ import moment from 'moment';
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import interactionPlugin from "@fullcalendar/interaction"; // needed for dayClick
+import interactionPlugin from "@fullcalendar/interaction";
 import ModalDay from '../modal-day/modal-day.component'
 
 import "@fullcalendar/core/main.css";
@@ -51,7 +51,7 @@ class MonthView extends React.Component {
     const dayPlantDataFilter = dayPlantData.filter(({date}) => moment(waterDate).format('YYYY-MM-DD') === date)
 
     localStorage.setItem('watered', JSON.stringify(dayPlantData))
-    console.log('dayPlantData: ', dayPlantDataFilter)
+
     this.setState({ dayPlantData: dayPlantDataFilter })
     this.props.updatePlants(dayPlantData)
   }
@@ -59,7 +59,7 @@ class MonthView extends React.Component {
   // get current date clicked (event or date) and open a modal with that current date
   handleDayClick = (e) => {
     const plantData = JSON.parse(localStorage.getItem('watered'))
-    console.log('e: ', e)
+
     if (e.event || plantData.filter(({date}) => date === e.dateStr)) {
       const start = e.dateStr || e.event.start
       const momentStart = moment(start).format('YYYY-MM-DD')
@@ -107,25 +107,3 @@ class MonthView extends React.Component {
 }
 
 export default MonthView;
-
-// import MonthHeader from '../month-header/month-header.component'
-// import MonthBody from '../month-body/month-body.component.jsx'
-
-// import './month.styles.scss'
-
-// class MonthView extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.state = {}
-//   }
-
-//   render() {
-//     return (
-//       <div className='month'>
-//         <MonthHeader />
-//         <MonthBody plants={this.props.plantData} />
-//       </div>
-//     )
-//   }
-// }
