@@ -29,7 +29,23 @@
   - JWT protected routes & frontend signup/login to view calendar
 
 # Notes
-
+  ** Data reformat **
+  - I reformatted the given JSON data, I am pulling this from a database & thought it was best stored as a number.
+  - I could just as well have parsed the incoming string.
+    - From:
+      - [
+          {
+            "name": "Fiddle Leaf Fig", // String
+            "water_after": "7 days" // String
+          }
+        ]
+    - To:
+      - [
+          {
+            "name": "Fiddle Leaf Fig", // String
+            "days_water_after": 7 // Number
+          }
+        ]
 
 # Technologies used
   - Node.js (v10.16.0)
