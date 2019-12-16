@@ -7,21 +7,14 @@
 
 .fc-button {
   background-color: rgb(39, 184, 39);
-  ;
 }
 
 @media (max-width: 700px) {
   .fc-toolbar {
     flex-direction: column-reverse;
   }
-  .fc-left {
-
-  }
   .fc-center {
     margin: 20px 0;
-  }
-  .fc-right {
-    
   }
   .fc-view-container {
     height: 100%;

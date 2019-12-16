@@ -17,20 +17,35 @@ class Calendar extends React.Component {
 
   async componentDidMount() {
     try {
+      const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
       const { data } = await axios.get('/api/data/plants')
       const plants = getPlantWaterSchedule(data)
+      console.log('localStorage: ', localStoragePlantData)
+      if (!localStoragePlantData) {
+        localStorage.setItem('watered', JSON.stringify(plants))
 
-      this.setState({ plants: plants })
-
+        this.setState({ plants: plants })
+      }
+      else if (localStoragePlantData) {
+        this.setState({ plants: localStoragePlantData })
+      }
+      else {
+        this.setState({ plants: plants })
+      }
     } catch (error) {
       console.error(error)
     }
   }
 
+  updatePlants = (plants) => {
+    console.log('updatePlants: ', plants)
+    this.setState({ plants })
+  }
+
   render() {
     return (
       <div className="calendar">
-        <MonthView plantData={this.state.plants} />
+        <MonthView plantData={this.state.plants} updatePlants={this.updatePlants} />
       </div>
     )
   }

@@ -22,9 +22,43 @@ class MonthView extends React.Component {
       dayPlantData: null
     }
   }
+  
+  setPlantHasBeenWatered = (currPlant, waterDate) => {
+    let waterSchedule = JSON.parse(localStorage.getItem('watered'))
+    
+
+    let dayPlantData = waterSchedule.map(plant =>{
+      const {date, plantId, watered} = plant
+      if (moment(waterDate).format('YYYY-MM-DD') === date && plantId === currPlant.plantId) {
+        plant.watered = !watered
+        if (!watered) {
+          plant.classNames = ['event-active']
+        }
+        else {
+          plant.classNames = [null]
+        }
+        return plant
+      }
+      else if(moment(waterDate).format('YYYY-MM-DD') === date) {
+        return plant
+      }
+      else {
+        return plant
+      }
+    })
+    this.props.updatePlants(dayPlantData)
+
+    const dayPlantDataFilter = dayPlantData.filter(({date}) => moment(waterDate).format('YYYY-MM-DD') === date)
+
+    localStorage.setItem('watered', JSON.stringify(dayPlantData))
+    console.log('dayPlantData: ', dayPlantDataFilter)
+    this.setState({ dayPlantData: dayPlantDataFilter })
+    this.props.updatePlants(dayPlantData)
+  }
+
   // get current date clicked (event or date) and open a modal with that current date
   handleDayClick = (e) => {
-    let { plantData } = this.props
+    const plantData = JSON.parse(localStorage.getItem('watered'))
     console.log('e: ', e)
     if (e.event || plantData.filter(({date}) => date === e.dateStr)) {
       const start = e.dateStr || e.event.start
@@ -64,6 +98,7 @@ class MonthView extends React.Component {
         <ModalDay
           date={this.state.date}
           dayPlantData={this.state.dayPlantData}
+          setPlantHasBeenWatered={this.setPlantHasBeenWatered}
         />
 
       </>
