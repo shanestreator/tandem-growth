@@ -32,7 +32,7 @@
 # Notes
   ** Data reformat **
   - I reformatted the given JSON data, I am pulling this from a database & thought it was best stored as a number.
-  - I could just as well have parsed the incoming string provided in <stron>Apprentice_WeGrowInTandem_Data.json</strong>.
+  - I could just as well have parsed the incoming string provided in <strong>Apprentice_WeGrowInTandem_Data.json</strong>.
     - From:
       - [
           {
