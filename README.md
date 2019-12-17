@@ -87,3 +87,11 @@ install dependencies `npm install && cd client && npm install`
   - After repo is cloned, 
   - Change Directory: command `cd client`
   - Run Test: command `npm test`
+
+# Testing API
+  - Open Postman
+  - All Plants: GET to https://tandem-growth.herokuapp.com/api/data/plants
+  - One Plant : GET to https://tandem-growth.herokuapp.com/api/data/plants/:id
+    - :id = plantId from a plant object of 'All Plants' request
+
+  - I have commented out the POST, UPDATE, & DELETE routes as they are not protected as of yet
