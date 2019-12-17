@@ -21,7 +21,7 @@ class Calendar extends React.Component {
             plants = getPlantWaterSchedule(data)
       
       const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
-      console.log('plants: ', plants)
+
       if (!localStoragePlantData) {
         localStorage.setItem('watered', JSON.stringify(plants))
         this.setState({ plants: plants })
