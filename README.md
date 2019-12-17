@@ -1,5 +1,5 @@
 # Deployed Application
-  Visual algorithm representation... https://github.com/shanestreator/tandem-growth
+  Visual algorithm representation... https://tandem-growth.herokuapp.com/
 
 # tandem-growth
   A project designed to remove the stress of remembering when to water your beloved plants...
