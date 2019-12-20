@@ -1,21 +1,32 @@
 import 'jest'
 
-import tandemData from '../data/Apprentice_WeGrowInTandem_Data'
+import { dummyInput, dummyData } from '../data/dummyData'
 import getPlantWaterSchedule from './getPlantWaterSchedule'
-import waterScheduleResult from '../data/waterSchedule_Data'
 
 it('getPlantWaterSchedule should be truthy', () => {
-  expect(getPlantWaterSchedule(tandemData)).toBeTruthy()
+  expect(getPlantWaterSchedule(dummyInput)).toBeTruthy()
+})
+
+it('getPlantWaterSchedule returns an array', () => {
+  expect(getPlantWaterSchedule(dummyInput)).toBeInstanceOf(Array)
+})
+
+it('getPlantWaterSchedule returns an array of objects', () => {
+  expect(getPlantWaterSchedule(dummyInput).map(data => typeof data)).toEqual(dummyData.map(data => typeof data))
 })
 
 it('getPlantWaterSchedule should return the correct title', () => {
-  expect(getPlantWaterSchedule(tandemData)[0].title).toBe(waterScheduleResult[0].title)
-  expect(getPlantWaterSchedule(tandemData)[50].title).toBe(waterScheduleResult[50].title)
-  expect(getPlantWaterSchedule(tandemData)[100].title).toBe(waterScheduleResult[100].title)
+  expect(getPlantWaterSchedule(dummyInput)[0].title).toBe(dummyData[0].title)
+  expect(getPlantWaterSchedule(dummyInput)[25].title).toBe(dummyData[25].title)
+  expect(getPlantWaterSchedule(dummyInput)[50].title).toBe(dummyData[50].title)
+  expect(getPlantWaterSchedule(dummyInput)[75].title).toBe(dummyData[75].title)
+  expect(getPlantWaterSchedule(dummyInput)[100].title).toBe(dummyData[100].title)
 })
 
 it('getPlantWaterSchedule should return the correct date', () => {
-  expect(getPlantWaterSchedule(tandemData)[0].date).toBe(waterScheduleResult[0].date)
-  expect(getPlantWaterSchedule(tandemData)[1].date).toBe(waterScheduleResult[1].date)
-  expect(getPlantWaterSchedule(tandemData)[2].date).toBe(waterScheduleResult[2].date)
+  expect(getPlantWaterSchedule(dummyInput)[0].date).toBe(dummyData[0].date)
+  expect(getPlantWaterSchedule(dummyInput)[25].date).toBe(dummyData[25].date)
+  expect(getPlantWaterSchedule(dummyInput)[50].date).toBe(dummyData[50].date)
+  expect(getPlantWaterSchedule(dummyInput)[75].date).toBe(dummyData[75].date)
+  expect(getPlantWaterSchedule(dummyInput)[100].date).toBe(dummyData[100].date)
 })

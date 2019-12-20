@@ -19,6 +19,7 @@ class Calendar extends React.Component {
     try {
       const { data } = await axios.get('/api/data/plants'),
             plants = getPlantWaterSchedule(data)
+            console.log('plants: ', plants)
       this.setState({ plants })
       // const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
 
