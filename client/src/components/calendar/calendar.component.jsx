@@ -19,19 +19,19 @@ class Calendar extends React.Component {
     try {
       const { data } = await axios.get('/api/data/plants'),
             plants = getPlantWaterSchedule(data)
-      
-      const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
+      this.setState({ plants })
+      // const localStoragePlantData = JSON.parse(localStorage.getItem('watered'))
 
-      if (!localStoragePlantData) {
-        localStorage.setItem('watered', JSON.stringify(plants))
-        this.setState({ plants: plants })
-      }
-      else if (localStoragePlantData) {
-        this.setState({ plants: localStoragePlantData })
-      }
-      else {
-        this.setState({ plants: plants })
-      }
+      // if (!localStoragePlantData) {
+      //   localStorage.setItem('watered', JSON.stringify(plants))
+      //   this.setState({ plants: plants })
+      // }
+      // else if (localStoragePlantData) {
+      //   this.setState({ plants: localStoragePlantData })
+      // }
+      // else {
+      //   this.setState({ plants: plants })
+      // }
     } catch (error) {
       console.error(error)
     }

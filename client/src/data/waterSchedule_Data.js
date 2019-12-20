@@ -1,4 +1,4 @@
-const waterSchedule_data = [
+const waterScheduleResult = [
   {title: "💧 Fiddle Leaf Fig", date: "2019-12-16", plantId: "be71eec1-c3c7-4b80-a73a-30262d31cbdb", watered: false},
   {title: "💧 Fiddle Leaf Fig", date: "2019-12-23", plantId: "be71eec1-c3c7-4b80-a73a-30262d31cbdb", watered: false},
   {title: "💧 Fiddle Leaf Fig", date: "2019-12-30", plantId: "be71eec1-c3c7-4b80-a73a-30262d31cbdb", watered: false},
@@ -180,3 +180,4 @@ const waterSchedule_data = [
   {title: "💧 Wavy Fern", date: "2020-03-09", plantId: "52820a2a-200f-4aa4-8f34-fb0ff46d387b", watered: false}
 ]
 
+export default waterScheduleResult
