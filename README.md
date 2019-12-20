@@ -52,6 +52,9 @@
         ]
 
 # Solution Algorithm
+  - UPDATE on branch `improvements`
+    - Algorithm designed to take any day 1-7 and multiple of 7
+    - Must have a start date of Monday
   - getPlantWaterSchedule()
     - Functionality:
       - Specifically designed for the given data and number of days. This function returns an array of objects that is formatted to pair with event objects on the fullcalendar package being utilized.
